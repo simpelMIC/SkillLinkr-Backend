@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "baseUrl": "src",
+    "declaration": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "lib": ["esnext"],
+    "module": "ESNext",
+    "noImplicitOverride": true,
+    "outDir": "./build",
+    "strict": true,
+    "target": "ESNext",
+    "skipLibCheck": true,
+    "useDefineForClassFields": true,
+    "isolatedModules": true,
+    "moduleResolution": "Node",
+    "typeRoots": ["./node_modules/@types", "./src/types/express"],
+    "resolveJsonModule": true
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.d.ts"],
+  "rules": {
+    "orderedImports": [true]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "plugins": ["@typescript-eslint", "prettier", "unicorn"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "@typescript-eslint/space-before-function-paren": 0,
+    "@typescript-eslint/prefer-for-of": 0,
+    "@typescript-eslint/consistent-type-imports": 0,
+    "@typescript-eslint/no-for-in-array": 0,
+    "@typescript-eslint/indent": 0,
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": 0,
+    "array-bracket-spacing": 0,
+    "dot-location": "off",
+    "prefer-named-capture-group": 0,
+    "space-before-function-paren": 0,
+    "prefer-destructuring": 0,
+    "no-sync": 0,
+    "operator-linebreak": [
+      "error",
+      "after",
+      { "overrides": { "?": "before", ":": "before" } }
+    ],
+    "unicorn/import-style": [
+      "error",
+      {
+        "styles": {
+          "util": false,
+          "path": {
+            "named": true
+          }
+        }
+      }
+    ],
+    "unicorn/prefer-set-has": 0,
+    "unicorn/filename-case": 0,
+    "object-curly-spacing": 0,
+    "no-process-env": 0,
+    "guard-for-in": 0,
+    "unicorn/prefer-dom-node-dataset": 0,
+    "unicorn/prefer-string-slice": 0,
+    "unicorn/prefer-regexp-test": 0,
+    "unicorn/no-for-loop": 0,
+    "unicorn/consistent-function-scoping": 0,
+    "no-mixed-operators": 0,
+    "no-plusplus": 0,
+    "semi": ["error", "always"],
+    "no-unused-vars": "error",
+    "no-unused-expressions": "error",
+    "no-unused-labels": "error",
+    "no-var": "error",
+    "quotes": ["warn", "single", { "avoidEscape": true }],
+    "linebreak-style": ["error", "windows"],
+    "require-await": "error"
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true
+  },
+  "ignorePatterns": []
+}
