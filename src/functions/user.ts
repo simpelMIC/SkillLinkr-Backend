@@ -219,19 +219,13 @@ async function patchUser({
   });
 
   if (
-    (released !== undefined ||
-      roleId !== undefined ||
-      firstname !== undefined ||
-      lastname !== undefined ||
-      mail !== undefined) &&
+    (released !== undefined || roleId !== undefined || mail !== undefined) &&
     !userCanModifyOtherUser &&
     patchUserId !== requestUserId
   ) {
     const notAllowedFields = Object.keys({
       released,
       roleId,
-      firstname,
-      lastname,
       mail
     });
 
