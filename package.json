@@ -7,8 +7,8 @@
     "dev": "npx tsc -w",
     "build": "npx tsc",
     "server": "nodemon ./build/server/index.js",
-    "prisma-migrate": "cd src\\database\\prisma && npx prisma migrate dev --name auto-update",
-    "prisma-migrate:create-only": "cd src\\database\\prisma && npx prisma migrate dev --name auto-update --create-only",
+    "prisma-migrate": "cd src/database/prisma && npx prisma migrate dev --name auto-update",
+    "prisma-migrate:create-only": "cd src/database/prisma && npx prisma migrate dev --name auto-update --create-only",
     "setup": "npx tsx ./seedDatabase.ts && npx tsx ./setup.ts",
     "update": "npx npm-check -u"
   },
