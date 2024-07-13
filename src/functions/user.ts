@@ -141,7 +141,9 @@ async function getUserData({
       lastname: true,
       mail: true,
       released: true,
-      role: true
+      role: true,
+      updatedAt: true,
+      createdAt: true
     }
   });
 
@@ -167,7 +169,9 @@ async function getUserData({
         lastname: user.lastname,
         mail: user.mail,
         released: user.released,
-        role: user.role
+        role: user.role,
+        updatedAt: user.updatedAt,
+        createdAt: user.createdAt
       }
     }
   };
