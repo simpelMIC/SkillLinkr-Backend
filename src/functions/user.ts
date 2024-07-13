@@ -68,7 +68,7 @@ function signToken(id: number): string {
     {
       id: id
     },
-    process.env.api_secret as string,
+    process.env.API_SECRET as string,
     {
       expiresIn: '90 days'
     }

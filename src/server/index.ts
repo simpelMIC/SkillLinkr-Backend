@@ -33,7 +33,7 @@ app.use(
   express.static(join(dirname(fileURLToPath(import.meta.url)), '../public'))
 );
 
-const port = parseInt(process.env.port ?? '8080');
+const port = parseInt(process.env.PORT ?? '8080');
 
 app.listen(port, () => {
   console.log(`listening on port localhost:${port}`);

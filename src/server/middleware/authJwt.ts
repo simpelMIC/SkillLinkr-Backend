@@ -11,7 +11,7 @@ const verifyToken = function () {
     ) {
       jwt.verify(
         req.headers.authorization.split(' ')[1],
-        process.env.api_secret as string,
+        process.env.API_SECRET as string,
         async (err, decode) => {
           if (err || !decode || typeof decode === 'string') {
             req.user = undefined;
