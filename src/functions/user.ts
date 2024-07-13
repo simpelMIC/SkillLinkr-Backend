@@ -42,7 +42,7 @@ async function signup({
       lastname,
       mail,
       password: hashedPassword,
-      roleId: 2 // Evaluator role
+      roleId: 2 // User role
     },
     select: {
       id: true
