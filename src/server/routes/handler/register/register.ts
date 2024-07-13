@@ -65,7 +65,7 @@ const post = function () {
         .status(400)
         .send({
           status: 'error',
-          message: 'Passwords doesnt match'
+          message: "Passwords doesn't match"
         })
         .end();
 
