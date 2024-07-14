@@ -40,7 +40,8 @@ const verifyToken = function () {
               updatedAt: true,
               mail: true,
               roleId: true,
-              teachingInformation: true
+              teachingInformation: true,
+              socialMedia: true
             }
           });
           if (!user) {

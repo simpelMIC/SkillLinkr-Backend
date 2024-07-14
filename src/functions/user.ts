@@ -55,6 +55,12 @@ async function signup({
     }
   });
 
+  await prisma.socialMedia.create({
+    data: {
+      userId: user.id
+    }
+  });
+
   const token = signToken(user.id);
 
   return {

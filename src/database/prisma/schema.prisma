@@ -19,6 +19,7 @@ model User {
   roleId              Int
   released            Boolean              @default(false)
   teachingInformation TeachingInformation?
+  socialMedia         SocialMedia?
   createdAt           DateTime             @default(now())
   updatedAt           DateTime             @updatedAt
 }
@@ -33,6 +34,18 @@ model TeachingInformation {
   teachingCountry String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+}
+
+model SocialMedia {
+  id            Int      @id @default(autoincrement())
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String   @unique
+  xName         String?
+  instagramName String?
+  discordName   String?
+  facebookName  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model Role {

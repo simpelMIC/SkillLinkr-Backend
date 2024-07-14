@@ -6,6 +6,10 @@ import {
   get as userTeachingGet,
   patch as userTeachingPatch
 } from '../handler/user/teachinginformation/teachinginformation.js';
+import {
+  get as userSocialMediaGet,
+  patch as userSocialMediaPatch
+} from '../handler/user/socialmedia/socialmedia.js';
 
 const tokenRouter = express.Router();
 tokenRouter.use(verifyToken());
@@ -17,5 +21,7 @@ tokenRouter.patch('/user', userPatch());
 tokenRouter.get('/user/released', userReleasedGet());
 tokenRouter.get('/user/teachinginformation', userTeachingGet());
 tokenRouter.patch('/user/teachinginformation', userTeachingPatch());
+tokenRouter.get('/user/socialmedia', userSocialMediaGet());
+tokenRouter.patch('/user/socialmedia', userSocialMediaPatch());
 
 export { tokenRouter };
