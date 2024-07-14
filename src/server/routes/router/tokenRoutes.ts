@@ -15,7 +15,7 @@ tokenRouter.use(verifyToken());
 tokenRouter.get('/user', userGet());
 tokenRouter.patch('/user', userPatch());
 tokenRouter.get('/user/released', userReleasedGet());
-tokenRouter.get('/user/teaching', userTeachingGet());
-tokenRouter.patch('/user/teaching', userTeachingPatch());
+tokenRouter.get('/user/teachinginformation', userTeachingGet());
+tokenRouter.patch('/user/teachinginformation', userTeachingPatch());
 
 export { tokenRouter };

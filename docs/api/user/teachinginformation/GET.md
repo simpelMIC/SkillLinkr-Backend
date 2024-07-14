@@ -1,4 +1,4 @@
-# /user/teaching
+# /user/teachinginformation
 
 ---
 
