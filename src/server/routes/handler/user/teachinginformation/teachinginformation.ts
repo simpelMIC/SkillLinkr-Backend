@@ -29,8 +29,8 @@ const patch = function () {
     }: {
       teachesOnline: boolean | undefined;
       teachesInPerson: boolean | undefined;
-      teachingCity: string | undefined;
-      teachingCountry: string | undefined;
+      teachingCity: string | undefined | null;
+      teachingCountry: string | undefined | null;
       patchUserId: string;
     } = req.body;
 
