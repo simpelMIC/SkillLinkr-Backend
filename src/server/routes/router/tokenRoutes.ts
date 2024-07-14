@@ -5,7 +5,7 @@ import { get as userReleasedGet } from '../handler/user/released/released.js';
 import {
   get as userTeachingGet,
   patch as userTeachingPatch
-} from '../handler/user/teaching/teaching.js';
+} from '../handler/user/teachinginformation/teachinginformation.js';
 
 const tokenRouter = express.Router();
 tokenRouter.use(verifyToken());
