@@ -8,7 +8,7 @@
     "@typescript-eslint/consistent-type-imports": 0,
     "@typescript-eslint/no-for-in-array": 0,
     "@typescript-eslint/indent": 0,
-    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-non-null-asserted-optional-chain": 0,
     "array-bracket-spacing": 0,
     "dot-location": "off",
