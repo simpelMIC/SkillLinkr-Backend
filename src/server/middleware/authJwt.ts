@@ -39,7 +39,8 @@ const verifyToken = function () {
               password: false,
               updatedAt: true,
               mail: true,
-              roleId: true
+              roleId: true,
+              teachingInformation: true
             }
           });
           if (!user) {

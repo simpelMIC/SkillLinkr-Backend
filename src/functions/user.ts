@@ -49,6 +49,12 @@ async function signup({
     }
   });
 
+  await prisma.teachingInformation.create({
+    data: {
+      userId: user.id
+    }
+  });
+
   const token = signToken(user.id);
 
   return {
@@ -63,7 +69,7 @@ async function signup({
   };
 }
 
-function signToken(id: number): string {
+function signToken(id: string): string {
   return jwt.sign(
     {
       id: id
@@ -129,7 +135,7 @@ async function login({
 async function getUserData({
   id
 }: {
-  id: number;
+  id: string;
 }): Promise<Return<Record<string, any> | string>> {
   const user = await prisma.user.findFirst({
     where: {
@@ -187,8 +193,8 @@ async function patchUser({
   roleId,
   released
 }: {
-  requestUserId: number;
-  patchUserId: number;
+  requestUserId: string;
+  patchUserId: string;
   mail: string | undefined;
   firstname: string | undefined;
   lastname: string | undefined;

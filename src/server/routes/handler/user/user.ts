@@ -23,35 +23,6 @@ const get = function () {
   };
 };
 
-const userIsReleased = () => {
-  return async function (req: Request, res: Response) {
-    const userId = req.user?.id!;
-    const data = await getUserData({ id: userId });
-
-    if (typeof data.send.message === 'object' && data.send.message.released) {
-      res
-        .status(200)
-        .send({
-          status: 'success',
-          message: 'The account is released'
-        })
-        .end();
-
-      return;
-    }
-
-    res
-      .status(401)
-      .send({
-        status: 'unreleased',
-        message: 'The account is not released'
-      })
-      .end();
-
-    return;
-  };
-};
-
 const patch = function () {
   return async function (req: Request, res: Response) {
     const requestUserId = req.user?.id!;
@@ -71,7 +42,7 @@ const patch = function () {
       password: string | undefined;
       roleId: number | undefined;
       released: boolean | undefined;
-      patchUserId: number;
+      patchUserId: string;
     } = req.body;
 
     const roleExists = await prisma.role.findFirst({
@@ -91,7 +62,7 @@ const patch = function () {
       !['number', 'undefined'].includes(typeof roleId) ||
       (roleId !== undefined && !roleExists) ||
       !['boolean', 'undefined'].includes(typeof released) ||
-      typeof patchUserId !== 'number'
+      typeof patchUserId !== 'string'
     ) {
       res
         .status(400)
@@ -145,4 +116,4 @@ const patch = function () {
   };
 };
 
-export { get, patch, userIsReleased };
+export { get, patch };

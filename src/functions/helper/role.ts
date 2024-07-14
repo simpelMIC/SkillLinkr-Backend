@@ -25,7 +25,7 @@ async function userHasPermission({
   userId,
   permissionName
 }: {
-  userId: number;
+  userId: string;
   permissionName: string;
 }): Promise<boolean> {
   const user = await prisma.user.findFirst({

@@ -1,4 +1,4 @@
-# /user
+# /user/teaching
 
 ---
 
@@ -25,18 +25,12 @@ Status code: 200
 Content: {
   status: 'success',
   message: {
-    id: string,
-    firstname: string,
-    lastname: string,
-    mail: string,
-    released: boolean,
-    role: {
-      id: number,
-      name: string,
-      description: string,
-      createdAt: Date,
-      updatedAt: Date
-    },
+    id: number,
+    userId: string,
+    teachesInPerson: boolean,
+    teachesOnline: boolean,
+    teachingCity: string | null,
+    teachingCountry: string | null,
     updatedAt: Date,
     createdAt: Date
   },

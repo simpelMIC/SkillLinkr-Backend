@@ -1,4 +1,4 @@
-# /user
+# /user/teaching
 
 ---
 
@@ -14,12 +14,10 @@
 
 ### Optional
 
-- `mail: string` // Only allowed when user can modify others
-- `firstname: string`
-- `lastname: string`
-- `password: string`
-- `roleId: number` // Only allowed when user can modify others
-- `released: boolean` // Only allowed when user can modify others
+- `teachesOnline: boolean`
+- `teachesInPerson: boolean`
+- `teachingCity: string | null`
+- `teachingCountry: string | null`
 
 ### Success response
 
@@ -29,7 +27,7 @@ Status is defined in the Status.md file
 Status code: 200
 Content: {
   status: 'success',
-  message: 'User updated',
+  message: 'Teaching information updated',
 }
 ```
 
