@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { login } from '../../../../functions/user.js';
+import { login } from '@functions/user.js';
 
 const post = function () {
   return async function (req: Request, res: Response) {

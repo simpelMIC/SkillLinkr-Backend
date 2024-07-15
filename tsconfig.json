@@ -16,7 +16,13 @@
     "isolatedModules": true,
     "moduleResolution": "Node",
     "typeRoots": ["./node_modules/@types", "./src/types/express"],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "@database/*": ["database/*"],
+      "@functions/*": ["functions/*"],
+      "@handler/*": ["server/routes/handler/*"],
+      "@middleware/*": ["server/middleware/*"]
+    }
   },
   "include": ["./src/**/*.ts", "./src/**/*.d.ts"],
   "rules": {

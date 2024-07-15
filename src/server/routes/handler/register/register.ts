@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { signup } from '../../../../functions/user.js';
+import { signup } from '@functions/user.js';
 import EmailValidator from 'email-validator';
 
 const post = function () {

@@ -1,8 +1,5 @@
 import { Request, Response } from 'express';
-import {
-  getUserTeachingData,
-  patchUserTeaching
-} from '../../../../../functions/teaching.js';
+import { getUserTeachingData, patchUserTeaching } from '@functions/teaching.js';
 
 const get = function () {
   return async function (req: Request, res: Response) {

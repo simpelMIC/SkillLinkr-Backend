@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { getUserData, patchUser } from '../../../../functions/user.js';
-import { prisma } from '../../../../database/prisma.js';
+import { getUserData, patchUser } from '@functions/user.js';
+import { prisma } from '@database/prisma.js';
 import EmailValidator from 'email-validator';
 
 const get = function () {

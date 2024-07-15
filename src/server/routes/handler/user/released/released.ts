@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getUserData } from '../../../../../functions/user.js';
+import { getUserData } from '@functions/user.js';
 
 const get = () => {
   return async function (req: Request, res: Response) {

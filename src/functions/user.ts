@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { prisma } from '../database/prisma.js';
+import { prisma } from '@database/prisma.js';
 import type { Return } from '../types/Return.js';
-import { userHasPermission } from './helper/role.js';
+import { userHasPermission } from '@functions/helper/role.js';
 
 async function signup({
   mail,

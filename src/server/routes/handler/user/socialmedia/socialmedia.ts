@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import {
   getUserSocialMediaData,
   patchUserSocialMedia
-} from '../../../../../functions/socialmedia.js';
+} from '@functions/socialmedia.js';
 
 const get = function () {
   return async function (req: Request, res: Response) {

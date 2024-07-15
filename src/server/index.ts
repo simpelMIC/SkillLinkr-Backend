@@ -7,8 +7,8 @@ import { fileURLToPath } from 'url';
 import { config } from 'dotenv';
 import { publicRouter } from './routes/router/publicRoutes.js';
 import { tokenRouter } from './routes/router/tokenRoutes.js';
-import { logger } from './middleware/logger.js';
-import { setResponseHeader } from './middleware/setResponseHeader.js';
+import { logger } from '@middleware/logger.js';
+import { setResponseHeader } from '@middleware/setResponseHeader.js';
 
 config({
   path: '../../.env'

@@ -1,15 +1,15 @@
 import express from 'express';
-import { verifyToken } from '../../middleware/authJwt.js';
-import { get as userGet, patch as userPatch } from '../handler/user/user.js';
-import { get as userReleasedGet } from '../handler/user/released/released.js';
+import { verifyToken } from '@middleware/authJwt.js';
+import { get as userGet, patch as userPatch } from '@handler/user/user.js';
+import { get as userReleasedGet } from '@handler/user/released/released.js';
 import {
   get as userTeachingGet,
   patch as userTeachingPatch
-} from '../handler/user/teachinginformation/teachinginformation.js';
+} from '@handler/user/teachinginformation/teachinginformation.js';
 import {
   get as userSocialMediaGet,
   patch as userSocialMediaPatch
-} from '../handler/user/socialmedia/socialmedia.js';
+} from '@handler/user/socialmedia/socialmedia.js';
 
 const tokenRouter = express.Router();
 tokenRouter.use(verifyToken());

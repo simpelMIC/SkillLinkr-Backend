@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { prisma } from '../../database/prisma.js';
+import { prisma } from '@database/prisma.js';
 
 const verifyToken = function () {
   return function (req: Request, res: Response, next: NextFunction) {
