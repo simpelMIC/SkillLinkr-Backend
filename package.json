@@ -10,7 +10,7 @@
     "prisma-migrate": "cd src/database/prisma && npx prisma migrate dev --name auto-update",
     "prisma-migrate:create-only": "cd src/database/prisma && npx prisma migrate dev --name auto-update --create-only",
     "prisma-migrate-deploy": "cd src/database/prisma && npx prisma migrate deploy",
-    "setup": "npx tsx ./seedDatabase.ts && npx tsx ./setup.ts",
+    "setup": "npx tsx ./setup.ts",
     "update": "npx npm-check -u"
   },
   "author": "KeineAhnung",

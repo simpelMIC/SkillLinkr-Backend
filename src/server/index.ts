@@ -9,6 +9,9 @@ import { publicRouter } from './routes/router/publicRoutes.js';
 import { tokenRouter } from './routes/router/tokenRoutes.js';
 import { logger } from '@middleware/logger.js';
 import { setResponseHeader } from '@middleware/setResponseHeader.js';
+import { seedHandler } from './seedHandler.js';
+
+await seedHandler();
 
 config({
   path: '../../.env'
