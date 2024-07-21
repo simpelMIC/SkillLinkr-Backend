@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import { prisma } from '@database/prisma.js';
 import type { Return } from '../types/Return.js';
 import { userHasPermission } from '@functions/helper/role.js';
+import { skillExists } from '@functions/helper/skill.js';
 
 async function signup({
   mail,
@@ -292,8 +293,189 @@ async function patchUser({
   };
 }
 
+async function getUserTeachingSkills({
+  id
+}: {
+  id: string;
+}): Promise<Return<Record<string, any> | string>> {
+  const skills = await prisma.user.findFirst({
+    where: {
+      id
+    },
+    select: {
+      id: true,
+      skillsToTeach: true
+    }
+  });
+
+  if (skills === null) {
+    return {
+      status: 'error',
+      statusCode: 400,
+      send: {
+        status: 'error',
+        message: "Requested user doesn't exist"
+      }
+    };
+  }
+
+  return {
+    status: 'success',
+    statusCode: 200,
+    send: {
+      status: 'success',
+      message: {
+        id: skills.id,
+        skillsToTeach: skills.skillsToTeach
+      }
+    }
+  };
+}
+
+async function patchUserTeachingSkills({
+  requestUserId,
+  patchUserId,
+  teachSkillIds
+}: {
+  requestUserId: string;
+  patchUserId: string;
+  teachSkillIds: number[];
+}): Promise<Return<string>> {
+  const requestUser = await prisma.user.findFirst({
+    where: {
+      id: requestUserId
+    },
+    select: {
+      id: true,
+      role: true
+    }
+  });
+
+  if (requestUser === null) {
+    return {
+      status: 'error',
+      statusCode: 401,
+      send: {
+        status: 'error',
+        message: "User doesn't exist."
+      }
+    };
+  }
+
+  const userCanModifyOtherUser = await userHasPermission({
+    userId: requestUser.id,
+    permissionName: 'user.other.modify'
+  });
+
+  if (
+    teachSkillIds !== undefined &&
+    !userCanModifyOtherUser &&
+    patchUserId !== requestUserId
+  ) {
+    const notAllowedFields = Object.keys({
+      teachSkillIds
+    });
+
+    return {
+      status: 'unauthorized',
+      statusCode: 401,
+      send: {
+        status: 'unauthorized',
+        message: `You are not allowed to update the following fields: ${notAllowedFields.join(',')}`
+      }
+    };
+  }
+
+  const userTeachingSkills = await prisma.user.findFirst({
+    where: {
+      id: patchUserId
+    },
+    select: {
+      skillsToTeach: true
+    }
+  });
+
+  if (userTeachingSkills === null) {
+    return {
+      status: 'error',
+      statusCode: 401,
+      send: {
+        status: 'error',
+        message: "User doesn't exist."
+      }
+    };
+  }
+
+  for (let i = 0; i < teachSkillIds.length; i++) {
+    if (!(await skillExists({ id: teachSkillIds[i] }))) {
+      return {
+        status: 'error',
+        statusCode: 400,
+        send: {
+          status: 'error',
+          message: 'Invalid skill id'
+        }
+      };
+    }
+  }
+
+  const removingSkills = userTeachingSkills.skillsToTeach.filter((e) => {
+    return !teachSkillIds.includes(e.id);
+  });
+
+  const learningSkills = teachSkillIds.filter((e) => {
+    return !userTeachingSkills.skillsToTeach.map((e) => e.id).includes(e);
+  });
+
+  for (let i = 0; i < removingSkills.length; i++) {
+    await prisma.user.update({
+      where: {
+        id: patchUserId
+      },
+      data: {
+        skillsToTeach: {
+          disconnect: {
+            id: removingSkills[i].id
+          }
+        }
+      }
+    });
+  }
+
+  for (let i = 0; i < learningSkills.length; i++) {
+    await prisma.user.update({
+      where: {
+        id: patchUserId
+      },
+      data: {
+        skillsToTeach: {
+          connect: {
+            id: learningSkills[i]
+          }
+        }
+      }
+    });
+  }
+
+  return {
+    status: 'success',
+    statusCode: 200,
+    send: {
+      status: 'success',
+      message: 'User updated'
+    }
+  };
+}
+
 async function hashPassword(password: string): Promise<string> {
   return await bcrypt.hash(password, 8);
 }
 
-export { signup, login, getUserData, patchUser };
+export {
+  signup,
+  login,
+  getUserData,
+  patchUser,
+  getUserTeachingSkills,
+  patchUserTeachingSkills
+};

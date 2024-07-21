@@ -20,6 +20,7 @@ model User {
   released            Boolean              @default(false)
   teachingInformation TeachingInformation?
   socialMedia         SocialMedia?
+  skillsToTeach       Skill[]
   createdAt           DateTime             @default(now())
   updatedAt           DateTime             @updatedAt
 }
@@ -65,4 +66,22 @@ model Permission {
   roles       Role[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model SkillCategory {
+  id        Int      @id @default(autoincrement())
+  name      String
+  skills    Skill[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Skill {
+  id              Int           @id @default(autoincrement())
+  name            String
+  skillCategory   SkillCategory @relation(fields: [skillCategoryId], references: [id])
+  skillCategoryId Int
+  userWhoTeach    User[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
 }

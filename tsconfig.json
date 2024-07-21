@@ -21,7 +21,8 @@
       "@database/*": ["database/*"],
       "@functions/*": ["functions/*"],
       "@handler/*": ["server/routes/handler/*"],
-      "@middleware/*": ["server/middleware/*"]
+      "@middleware/*": ["server/middleware/*"],
+      "@data/*": ["data/*"]
     }
   },
   "include": ["./src/**/*.ts", "./src/**/*.d.ts"],
