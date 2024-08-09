@@ -41,7 +41,8 @@ const verifyToken = function () {
               mail: true,
               roleId: true,
               teachingInformation: true,
-              socialMedia: true
+              socialMedia: true,
+              profilePictureName: true
             }
           });
           if (!user) {

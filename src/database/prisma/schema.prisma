@@ -21,6 +21,7 @@ model User {
   teachingInformation TeachingInformation?
   socialMedia         SocialMedia?
   skillsToTeach       Skill[]
+  profilePictureName  String?
   createdAt           DateTime             @default(now())
   updatedAt           DateTime             @updatedAt
 }

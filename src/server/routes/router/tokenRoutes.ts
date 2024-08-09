@@ -14,6 +14,11 @@ import {
   get as userSkillsGet,
   patch as userSkillsPatch
 } from '@handler/user/skills/skills.js';
+import {
+  post as userProfilePicturePost,
+  patch as userProfilePicturePatch,
+  deleteFile as userProfilePictureDelete
+} from '@handler/user/profilepicture/profilepicture.js';
 import { get as skillCategoriesGet } from '@handler/skillcategories/skillcategories.js';
 import { get as skillCategoryGet } from '@handler/skillcategory/skillcategory.js';
 import { get as skillsGet } from '@handler/skills/skills.js';
@@ -34,6 +39,9 @@ tokenRouter.get('/user/socialmedia', userSocialMediaGet());
 tokenRouter.patch('/user/socialmedia', userSocialMediaPatch());
 tokenRouter.get('/user/skills', userSkillsGet());
 tokenRouter.patch('/user/skills', userSkillsPatch());
+tokenRouter.post('/user/profilepicture', userProfilePicturePost());
+tokenRouter.patch('/user/profilepicture', userProfilePicturePatch());
+tokenRouter.delete('/user/profilepicture', userProfilePictureDelete());
 tokenRouter.get('/skill/specific/:id', specificSkillGet());
 tokenRouter.get('/skill/teachers/:id', teachersSkillGet());
 tokenRouter.get('/skills/:fromCategoryId', skillsGet());

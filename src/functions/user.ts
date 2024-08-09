@@ -156,7 +156,8 @@ async function getUserData({
       released: true,
       role: true,
       updatedAt: true,
-      createdAt: true
+      createdAt: true,
+      profilePictureName: true
     }
   });
 
@@ -183,6 +184,7 @@ async function getUserData({
         mail: user.mail,
         released: user.released,
         role: user.role,
+        profilePictureName: user.profilePictureName,
         updatedAt: user.updatedAt,
         createdAt: user.createdAt
       }
