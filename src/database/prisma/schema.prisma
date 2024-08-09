@@ -17,7 +17,7 @@ model User {
   password            String
   role                Role                 @relation(fields: [roleId], references: [id])
   roleId              Int
-  released            Boolean              @default(false)
+  released            Boolean              @default(true)
   teachingInformation TeachingInformation?
   socialMedia         SocialMedia?
   skillsToTeach       Skill[]
