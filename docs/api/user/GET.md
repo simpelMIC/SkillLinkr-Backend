@@ -37,7 +37,7 @@ Content: {
       createdAt: Date,
       updatedAt: Date
     },
-    profilePicutreName: string | null,
+    profilePictureName: string | null,
     updatedAt: Date,
     createdAt: Date
   },
