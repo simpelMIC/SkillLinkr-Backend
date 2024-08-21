@@ -47,7 +47,7 @@ const patch = () => {
           fileSize: maxSize
         },
         fileFilter: (req, file, callback) => {
-          if (file.mimetype === 'image/png') {
+          if (file.mimetype === 'image/jpeg') {
             callback(null, true);
           }
           callback(null, false);
@@ -115,7 +115,7 @@ const post = () => {
     }
 
     const maxSize = 2 * 1024 * 1024;
-    const filename = randomUUID() + '.png';
+    const filename = randomUUID() + '.jpg';
 
     const storage = multer.diskStorage({
       destination: (req, file, callback) => {
@@ -136,7 +136,7 @@ const post = () => {
           fileSize: maxSize
         },
         fileFilter: (req, file, callback) => {
-          if (file.mimetype === 'image/png') {
+          if (file.mimetype === 'image/jpeg') {
             callback(null, true);
           }
           callback(null, false);
