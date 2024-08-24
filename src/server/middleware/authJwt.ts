@@ -53,7 +53,8 @@ const verifyToken = function () {
               roleId: true,
               teachingInformation: true,
               socialMedia: true,
-              profilePictureName: true
+              profilePictureName: true,
+              biography: true
             }
           });
           if (!user) {

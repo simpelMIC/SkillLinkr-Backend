@@ -15,6 +15,7 @@ model User {
   firstname           String
   lastname            String
   password            String
+  biography           String?              @db.LongText
   role                Role                 @relation(fields: [roleId], references: [id])
   roleId              Int
   released            Boolean              @default(true)

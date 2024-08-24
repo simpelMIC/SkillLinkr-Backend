@@ -34,6 +34,7 @@ const patch = function () {
       password,
       roleId,
       released,
+      biography,
       patchUserId
     }: {
       mail: string | undefined;
@@ -42,6 +43,7 @@ const patch = function () {
       password: string | undefined;
       roleId: number | undefined;
       released: boolean | undefined;
+      biography: string | undefined | null;
       patchUserId: string;
     } = req.body;
 
@@ -62,6 +64,8 @@ const patch = function () {
       !['number', 'undefined'].includes(typeof roleId) ||
       (roleId !== undefined && !roleExists) ||
       !['boolean', 'undefined'].includes(typeof released) ||
+      (!['string', 'undefined'].includes(typeof biography) &&
+        biography !== null) ||
       typeof patchUserId !== 'string'
     ) {
       res
@@ -107,7 +111,8 @@ const patch = function () {
       patchUserId,
       released,
       requestUserId,
-      roleId
+      roleId,
+      biography
     });
 
     res.status(userUpdate.statusCode).send(userUpdate.send).end();

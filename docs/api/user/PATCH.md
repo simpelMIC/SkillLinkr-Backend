@@ -20,6 +20,7 @@
 - `password: string`
 - `roleId: number` // Only allowed when user can modify others
 - `released: boolean` // Only allowed when user can modify others
+- `biography: string | null`
 
 ### Success response
 

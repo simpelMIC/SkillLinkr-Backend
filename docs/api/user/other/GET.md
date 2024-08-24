@@ -29,6 +29,7 @@ Content: {
     firstname: string,
     lastname: string,
     mail: string,
+    biography: string | null,
     released: boolean,
     role: {
       id: number,

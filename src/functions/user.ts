@@ -157,7 +157,8 @@ async function getUserData({
       role: true,
       updatedAt: true,
       createdAt: true,
-      profilePictureName: true
+      profilePictureName: true,
+      biography: true
     }
   });
 
@@ -185,6 +186,7 @@ async function getUserData({
         released: user.released,
         role: user.role,
         profilePictureName: user.profilePictureName,
+        biography: user.biography,
         updatedAt: user.updatedAt,
         createdAt: user.createdAt
       }
@@ -200,7 +202,8 @@ async function patchUser({
   lastname,
   password,
   roleId,
-  released
+  released,
+  biography
 }: {
   requestUserId: string;
   patchUserId: string;
@@ -210,6 +213,7 @@ async function patchUser({
   password: string | undefined;
   roleId: number | undefined;
   released: boolean | undefined;
+  biography: string | undefined | null;
 }): Promise<Return<string>> {
   const requestUser = await prisma.user.findFirst({
     where: {
@@ -270,7 +274,8 @@ async function patchUser({
       lastname,
       password,
       roleId,
-      released
+      released,
+      biography
     }
   });
 
