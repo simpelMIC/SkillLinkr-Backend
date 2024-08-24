@@ -4,6 +4,8 @@ import multer from 'multer';
 import { randomUUID } from 'crypto';
 import { prisma } from '@database/prisma.js';
 import { rmSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 const patch = () => {
   return async function (req: Request, res: Response) {
@@ -32,7 +34,10 @@ const patch = () => {
       destination: (req, file, callback) => {
         callback(
           null,
-          process.env.INIT_CWD + '\\build\\public\\profilepictures'
+          join(
+            dirname(fileURLToPath(import.meta.url)),
+            '../../../../../public/profilepictures'
+          )
         );
       },
       filename: (req, file, callback) => {
@@ -121,7 +126,11 @@ const post = () => {
       destination: (req, file, callback) => {
         callback(
           null,
-          process.env.INIT_CWD + '\\build\\public\\profilepictures'
+
+          join(
+            dirname(fileURLToPath(import.meta.url)),
+            '../../../../../public/profilepictures'
+          )
         );
       },
       filename: (req, file, callback) => {
@@ -213,7 +222,10 @@ const deleteFile = () => {
     }
 
     rmSync(
-      process.env.INIT_CWD + '\\build\\public\\profilepictures\\' + filename
+      join(
+        dirname(fileURLToPath(import.meta.url)),
+        '../../../../../public/profilepictures/'
+      ) + filename
     );
 
     await prisma.user.update({
