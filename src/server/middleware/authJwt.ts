@@ -15,6 +15,17 @@ const verifyToken = function () {
         async (err, decode) => {
           if (err || !decode || typeof decode === 'string') {
             req.user = undefined;
+            if (err?.message.toLowerCase() === 'invalid token') {
+              res
+                .status(401)
+                .send({
+                  status: 'error',
+                  message: 'Invalid token'
+                })
+                .end();
+
+              return;
+            }
             res
               .status(401)
               .send({
