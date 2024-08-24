@@ -478,11 +478,67 @@ async function hashPassword(password: string): Promise<string> {
   return await bcrypt.hash(password, 8);
 }
 
+async function deleteUser({
+  requestUserId
+}: {
+  requestUserId: string;
+}): Promise<Return<string>> {
+  const userData = await prisma.user.findFirst({
+    where: {
+      id: requestUserId
+    }
+  });
+
+  if (!userData) {
+    return {
+      status: 'error',
+      statusCode: 400,
+      send: {
+        status: 'error',
+        message: 'User does not exist'
+      }
+    };
+  }
+
+  await prisma.user.update({
+    where: {
+      id: requestUserId
+    },
+    data: {
+      teachingInformation: {
+        delete: {}
+      },
+      socialMedia: {
+        delete: {}
+      },
+      skillsToTeach: {
+        set: []
+      }
+    }
+  });
+
+  await prisma.user.delete({
+    where: {
+      id: requestUserId
+    }
+  });
+
+  return {
+    status: 'success',
+    statusCode: 200,
+    send: {
+      status: 'success',
+      message: 'User deleted'
+    }
+  };
+}
+
 export {
   signup,
   login,
   getUserData,
   patchUser,
   getUserTeachingSkills,
-  patchUserTeachingSkills
+  patchUserTeachingSkills,
+  deleteUser
 };

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getUserData, patchUser } from '@functions/user.js';
+import { getUserData, patchUser, deleteUser } from '@functions/user.js';
 import { prisma } from '@database/prisma.js';
 import EmailValidator from 'email-validator';
 
@@ -121,4 +121,16 @@ const patch = function () {
   };
 };
 
-export { get, patch };
+const deleteFunc = function () {
+  return async function (req: Request, res: Response) {
+    const requestUserId = req.user?.id!;
+
+    const userDelete = await deleteUser({ requestUserId });
+
+    res.status(userDelete.statusCode).send(userDelete.send).end();
+
+    return;
+  };
+};
+
+export { get, patch, deleteFunc };
