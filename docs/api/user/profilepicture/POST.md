@@ -10,7 +10,7 @@
 
 ### Required
 
-- `file: File` - upload as file param, only png files accepted
+- `file: File` - upload as file param, only jpeg files accepted
 
 ### Optional
 
