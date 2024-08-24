@@ -72,6 +72,18 @@ const post = function () {
       return;
     }
 
+    if (firstname.length <= 0 || lastname.length <= 0) {
+      res
+        .status(400)
+        .send({
+          status: 'error',
+          message: 'Missing name'
+        })
+        .end();
+
+      return;
+    }
+
     const register = await signup({ firstname, lastname, password, mail });
 
     res.status(register.statusCode).send(register.send).end();
