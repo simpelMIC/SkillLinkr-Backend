@@ -24,6 +24,7 @@ import { get as skillCategoryGet } from '@handler/skillcategory/skillcategory.js
 import { get as skillsGet } from '@handler/skills/skills.js';
 import { get as specificSkillGet } from '@handler/skill/specific/specific.js';
 import { get as teachersSkillGet } from '@handler/skill/teachers/teachers.js';
+import { get as otherUserGet } from '@handler/user/other/user.js';
 
 const tokenRouter = express.Router();
 tokenRouter.use(verifyToken());
@@ -31,6 +32,7 @@ tokenRouter.use(verifyToken());
 // ! Reactive when subData exist
 // tokenRouter.get('/user/:subData?', userGet());
 tokenRouter.get('/user', userGet());
+tokenRouter.get('/user/other/:id', otherUserGet());
 tokenRouter.patch('/user', userPatch());
 tokenRouter.get('/user/released', userReleasedGet());
 tokenRouter.get('/user/teachinginformation', userTeachingGet());
